@@ -6,6 +6,7 @@ import javax.annotation.Generated;
 import javax.persistence.*;
 
 @Entity
+@Data
 public class User {
 
     @Id

@@ -21,6 +21,7 @@ public class UserController {
 
     @PostMapping("/addUser")
     public User adduser(@RequestBody User user){
+        System.out.println("UserEntity"+user.toString());
         return userRepository.save(user);
     }
 
