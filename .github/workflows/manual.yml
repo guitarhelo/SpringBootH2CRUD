@@ -63,7 +63,7 @@ jobs:
         - name: Build Docker Image
           run docker build . --file Dockerfile --tag SpringBootH2CRUD:$(data +%s)
         - name: Publish to Docker Repository
-          users: elgohr/Publish-Docker-Github-Action@master
+          uses:: elgohr/Publish-Docker-Github-Action@master
           with:
             name: panjingping1976/SpringBootH2CRUD:1.0
             username: ${{ secrets.DOCKER_USERNAME }}
