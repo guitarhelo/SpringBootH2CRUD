@@ -65,7 +65,9 @@ jobs:
         - name: Publish to Docker Repository
           users: elgohr/Publish-Docker-Github-Action@master
           with:
-            name:chri
+            name: panjingping1976/SpringBootH2CRUD:1.0
+            username: ${{ secrets.DOCKER_USERNAME }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
 
 
 
