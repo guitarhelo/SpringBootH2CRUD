@@ -45,7 +45,7 @@ jobs:
             docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
 
             # 使用Dockerfile构建镜像
-            docker build . --file Dockerfile --tag registry.cn-shanghai.aliyuncs.com/invt-thirdparty/SpringBootH2CRUD:2.4.1
+            docker build . --file Dockerfile --tag registry.cn-shanghai.aliyuncs.com/invt-thirdparty/springbooth2crud:2.4.1
             # 推送镜像到镜像仓库
-            docker push registry.cn-shanghai.aliyuncs.com/invt-thirdparty/SpringBootH2CRUD:2.4.1
+            docker push registry.cn-shanghai.aliyuncs.com/invt-thirdparty/springbooth2crud:2.4.1
 
