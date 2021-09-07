@@ -38,10 +38,14 @@ jobs:
       - name: Build with Maven
         run: mvn -B package -DskipTests --file pom.xml
 
-      #Build the application using Maven
-      - uses: actions/checkout@v2
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-
-
+          run: |
+            docker version
+            # 登录阿里云镜像仓库
+            docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
+            cd xxl-job-admin
+            # 使用Dockerfile构建镜像
+            docker build . --file Dockerfile --tag registry.cn-shanghai.aliyuncs.com/invt-thirdparty/SpringBootH2CRUD:2.4.1
+            # 推送镜像到镜像仓库
+            docker push registry.cn-shanghai.aliyuncs.com/invt-thirdparty/SpringBootH2CRUD:2.4.1
 
