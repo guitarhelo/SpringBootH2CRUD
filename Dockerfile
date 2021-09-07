@@ -5,7 +5,7 @@
 # For Java 11, try this
 FROM adoptopenjdk/openjdk11:alpine-jre
 # ARG 构建参数
-ARG JAR_FILE=target/libs/*.jar
+ARG JAR_FILE=target/*.jar
 # COPY 复制文件
 COPY ${JAR_FILE} app.jar
 
