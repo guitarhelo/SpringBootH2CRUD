@@ -1,5 +1,9 @@
 # FROM 指定基础镜像
-FROM openjdk:11-jdk-alpine
+# For Java 8, try this
+# FROM openjdk:8-jdk-alpine
+
+# For Java 11, try this
+FROM adoptopenjdk/openjdk11:alpine-jre
 # ARG 构建参数
 ARG JAR_FILE=build/libs/*.jar
 # COPY 复制文件
