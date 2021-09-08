@@ -65,7 +65,7 @@ jobs:
           password: "${{ secrets.ACR_PASSWORD }}"
       - name: Build Container image
         # 使用Dockerfile构建镜像
-        run: pwd
+
         run: docker build . --file Dockerfile --tag registry.cn-shanghai.aliyuncs.com/invt-thirdparty/springbooth2crud:2.4.1
       - name: Publish Docker image
         # 推送镜像到镜像仓库
