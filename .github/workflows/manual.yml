@@ -55,7 +55,7 @@ jobs:
 
       # 登录阿里云镜像仓库
       - name: Login to Docker Hub
-        run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
+        run: docker login --username=john.pan@1545387718320971 --password=Pass@2014 registry.cn-shanghai.aliyuncs.com
       - name: Build Container image
         # 使用Dockerfile构建镜像
         run: docker build . --file Dockerfile --tag registry.cn-shanghai.aliyuncs.com/invt-thirdparty/springbooth2crud:2.4.1
