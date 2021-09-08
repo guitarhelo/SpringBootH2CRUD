@@ -38,7 +38,7 @@ jobs:
       - name: Build Container image
         # 使用Dockerfile构建镜像
 
-        run: docker build . --file Dockerfile --tag registry.cn-shanghai.aliyuncs.com/invt-thirdparty/springbooth2crud:2.4.2
+        run: docker build . --file Dockerfile_gradle --tag registry.cn-shanghai.aliyuncs.com/invt-thirdparty/springbooth2crud:2.4.2
       - name: Publish Docker image
         # 推送镜像到镜像仓库
         run: docker push registry.cn-shanghai.aliyuncs.com/invt-thirdparty/springbooth2crud:2.4.2
