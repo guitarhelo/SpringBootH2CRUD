@@ -19,10 +19,11 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Build and test project with Maven
-        run: mvn -B package --file pom.xml
-      #- name: Build with Maven
-      #  run: mvn clean package -DskipTests
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew build
+
 
       # 登录阿里云镜像仓库
       #- name: Login to Docker Hub
@@ -37,7 +38,7 @@ jobs:
       - name: Build Container image
         # 使用Dockerfile构建镜像
 
-        run: docker build . --file Dockerfile --tag registry.cn-shanghai.aliyuncs.com/invt-thirdparty/springbooth2crud:2.4.1
+        run: docker build . --file Dockerfile --tag registry.cn-shanghai.aliyuncs.com/invt-thirdparty/springbooth2crud:2.4.2
       - name: Publish Docker image
         # 推送镜像到镜像仓库
-        run: docker push registry.cn-shanghai.aliyuncs.com/invt-thirdparty/springbooth2crud:2.4.1
+        run: docker push registry.cn-shanghai.aliyuncs.com/invt-thirdparty/springbooth2crud:2.4.2
