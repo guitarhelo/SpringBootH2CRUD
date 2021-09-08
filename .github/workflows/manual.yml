@@ -1,62 +1,17 @@
-# This is a basic workflow that is manually triggered
-# auth John.Pan #
-# create date :2021.9.5 #
-# desc: github action spring boot project template#
-name: Build and Image workflow
-
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
+name: Docker Image CI
 on:
   workflow_dispatch:
-   
-
 jobs:
-  build_and_test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 11
+      - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
-          java-version: 11
-
-      - name: Cache the Maven packages to speed up build
-        uses: actions/cache@v1
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
-
-      - name: Build and test project with Maven
-        run: mvn -B package --file pom.xml
-
-
-  publish-job:
-    runs-on: ubuntu-latest
-    needs: [build_and_test]
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
-        with:
-          java-version: 11
-      - run: mvn -B package --file pom.xml -DskipTests
-      - run: mkdir staging && cp target/*.jar staging
-      - uses: actions/upload-artifact@v1
-        with:
-          name: Package
-          path: staging
-
-  build-docker-image:
-    name: Publish to AliCloud Image Repo
-    runs-on: ubuntu-latest
-    #needs: [publish-job]
-
-    steps:
-
-      # Check out the repo
-      - name: Checkout
-        uses: actions/checkout@v2
-
+          java-version: 1.8
+      - name: Build with Maven
+        run: mvn clean package -DskipTests
 
       # 登录阿里云镜像仓库
       #- name: Login to Docker Hub
