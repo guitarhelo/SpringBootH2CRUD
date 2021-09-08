@@ -1,6 +1,9 @@
 name: Build and Docker Image CI(Maven)
 on:
   workflow_dispatch:
+env:
+  image_repo_url: 'https://registry.cn-shanghai.aliyuncs.com'
+  image_repo_namespace: 'invt-thirdparty'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,7 +33,7 @@ jobs:
       - name: Login to Aliyun Container Registry (ACR)
         uses: aliyun/acr-login@v1
         with:
-          login-server: https://registry.cn-shanghai.aliyuncs.com
+          login-server: $image_repo_url
           region-id: cn-shanghai  # 3
           username: "${{ secrets.ACR_USERNAME }}"
           password: "${{ secrets.ACR_PASSWORD }}"
