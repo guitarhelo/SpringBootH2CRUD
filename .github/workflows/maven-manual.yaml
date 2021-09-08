@@ -33,7 +33,7 @@ jobs:
       - name: Login to Aliyun Container Registry (ACR)
         uses: aliyun/acr-login@v1
         with:
-          login-server: "${{image_repo_url}}"
+          login-server: https://registry.cn-shanghai.aliyuncs.com
           region-id: cn-shanghai  # 3
           username: "${{ secrets.ACR_USERNAME }}"
           password: "${{ secrets.ACR_PASSWORD }}"
